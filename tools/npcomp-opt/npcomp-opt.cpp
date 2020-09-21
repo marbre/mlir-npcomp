@@ -90,7 +90,8 @@ int main(int argc, char **argv) {
 
   if (failed(MlirOptMain(output->os(), std::move(file), passPipeline, registry,
                          splitInputFile, verifyDiagnostics, verifyPasses,
-                         allowUnregisteredDialects))) {
+                         allowUnregisteredDialects,
+                         /*preloadDialectsInContext=*/false))) {
     return 1;
   }
   // Keep the output file if the invocation of MlirOptMain was successful.
